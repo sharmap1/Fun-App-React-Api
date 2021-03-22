@@ -27,51 +27,34 @@ const FunJoke = () => {
   const classes = useStyles();
 
   const [joke, setJoke] = useState("");
+  const [fetching, setFetching] = useState("false");
+
+  // useEffect(() => {
+  //   fetchJoke();
+  // }, []);
+
+  // const fetchJoke = () => {
+  //   axios
+  //     .get("https://icanhazdadjoke.com/", {
+  //       headers: { Accept: "application/json" },
+  //     })
+  //     .then((res) => setJoke(res.data))
+  //     .catch((err) => console.log(err));
+  // };
 
   useEffect(() => {
-    fetchJoke();
-  }, []);
-
-  const fetchJoke = () => {
-    axios
-      .get("https://icanhazdadjoke.com/", {
+    const fetchData = async () => {
+      const result = await axios.get("https://icanhazdadjoke.com/", {
         headers: { Accept: "application/json" },
-      })
-      .then((res) => setJoke(res.data))
-      .catch((err) => console.log(err));
-  };
+      });
+      console.log(result);
+      setJoke(`${result.data.joke}`);
+    };
 
-  // const [joke, setJoke] = useState("");
-  // const [fetching, setFetching] = useState("false");
-  // useEffect(() => {
-  //   // setFetching(true);
-  //   const fetchData = async () => {
-  //     const result = await axios(
-  //       "https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/type/general"
-  //     );
-  //     setJoke(`${result.data[0].setup} ${result.data[0].punchline}`);
-  //   };
-  //   fetchData();
-  // }, [fetching]);
+    fetchData();
+  }, [fetching]);
 
   return (
-    // <>
-    //   <Col md="12">
-    //     <Card.Body className="joke-card">
-    //       <Card.Img
-    //         className="card-img"
-    //         variant="top"
-    //         src="https://pheebzeatz.files.wordpress.com/2015/06/mr-bean.jpg"
-    //       />
-    //       <Card.Header as="h5">My Jokes</Card.Header>
-    //       <p style={{ margin: "20px" }}>{joke.joke}</p>
-    //       <button onClick={fetchJoke} className="btn btn-info">
-    //         next
-    //       </button>
-    //       {/* <p className="btn btn-primary text-white" onClick={fetchJoke}></p> */}
-    //     </Card.Body>
-    //   </Col>
-    // </>
     <>
       <Card className={classes.root}>
         <CardHeader
@@ -92,12 +75,16 @@ const FunJoke = () => {
           />
           <CardContent>
             <Typography variant="body" color="textSecondary" component="p">
-              {joke.joke}
+              {joke}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="medium" color="primary" onClick={fetchJoke}>
+          <Button
+            size="medium"
+            color="primary"
+            onClick={() => setFetching(!fetching)}
+          >
             next
           </Button>
         </CardActions>

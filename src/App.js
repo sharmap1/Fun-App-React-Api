@@ -60,6 +60,9 @@ function App() {
           <Grid item xs={6} sm={3}>
             <FunDogPic />
           </Grid>
+          <Grid item xs={6} sm={3}>
+            {/* <FunGiphy /> */}
+          </Grid>
         </Grid>
       </div>
     </>

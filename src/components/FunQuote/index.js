@@ -26,39 +26,41 @@ const useStyles = makeStyles({
 const FunQuote = () => {
   const classes = useStyles();
   const [quote, setQuote] = useState("");
+  const [image, setImage] = useState("");
   const [fetching, setFetching] = useState("false");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("https://api.kanye.rest?format=text");
-      setQuote(`${result.data}`);
-    };
+  const fetchData = () => {
+    const quoteAPI = "https://api.kanye.rest?format=text";
+    const imageAPI =
+      "https://api.unsplash.com/photos/?client_id=EU37VySjc_qaNcGWSluRwBpg0CJCUWCRq5_jYZPIIps";
 
+    const getQuoteAPI = axios.get(quoteAPI);
+    const getImageAPI = axios.get(imageAPI);
+    axios.all([getQuoteAPI, getImageAPI]).then(
+      axios.spread((...allData) => {
+        const allDataQuote = allData[0].data;
+        const allDataImage = allData[1].data;
+
+        // console.log(allDataQuote);
+        // console.log(allDataImage);
+
+        setImage(allDataImage);
+        setQuote(allDataQuote);
+      })
+    );
+  };
+
+  useEffect(() => {
     fetchData();
   }, [fetching]);
 
-  return (
-    // <React.Fragment>
-    //   <Col md="12">
-    //     <Card.Body className="quote-card">
-    //       <Card.Img
-    //         className="card-img"
-    //         variant="top"
-    //         src="https://images-na.ssl-images-amazon.com/images/I/61x07Ihm7aL._AC_.jpg"
-    //       />
-    //       <Card.Header as="h5">My Quotes</Card.Header>
+  // const onSearchClick = async (e) => {
+  //   e.preventDefault();
 
-    //       <p style={{ margin: "20px" }}>{quote}</p>
-    //       {/* </Card.Header> */}
-    //       <button
-    //         onClick={() => setFetching(!fetching)}
-    //         className="btn btn-info"
-    //       >
-    //         next
-    //       </button>
-    //     </Card.Body>
-    //   </Col>
-    // </React.Fragment>
+  //   setFetching(!fetching);
+  // };
+
+  return (
     <>
       <Card className={classes.root}>
         <CardHeader
@@ -69,12 +71,14 @@ const FunQuote = () => {
           }
           action={<IconButton aria-label="settings"></IconButton>}
           title="Quotes"
-          // subheader="September 14, 2016"s
         />
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image="https://images-na.ssl-images-amazon.com/images/I/61x07Ihm7aL._AC_.jpg"
+            image={
+              "https://images-na.ssl-images-amazon.com/images/I/61x07Ihm7aL._AC_.jpg"
+            }
+            // image={renderImage()}
             title="Contemplative Dog"
           />
           <CardContent>
@@ -97,3 +101,10 @@ const FunQuote = () => {
   );
 };
 export default FunQuote;
+
+//Access Key
+// EU37VySjc_qaNcGWSluRwBpg0CJCUWCRq5_jYZPIIps
+//Secret key
+// EvoOk0FTqekhzYxFJis5puly8jbg1a5XYU2fy_efkRc
+// https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY
+// https://api.unsplash.com/photos/?client_id=EU37VySjc_qaNcGWSluRwBpg0CJCUWCRq5_jYZPIIps

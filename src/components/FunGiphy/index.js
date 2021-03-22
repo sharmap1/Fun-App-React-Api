@@ -11,11 +11,16 @@ const FunGiphy = () => {
       const result = await axios(
         `https://api.giphy.com/v1/gifs/trending?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9`
       );
-      console.log(result);
+      //   console.log(result);
       let randomIndex = Math.floor(Math.random() * 100);
 
-      //   setGiphy(`${result.data.data[10].images.fixed_height.url}`);
-      setGiphy(`${result.data.data[randomIndex].images.fixed_height.url}`);
+      // setGiphy(`${result.data.data[randomIndex].images.fixed_height.url}`);
+      let results = result.data.data[randomIndex];
+      let allResults = results.images.fixed_height.url;
+      setGiphy(allResults);
+
+      //   console.log(`${result.data.data}`);
+      //   setGiphy(`${result.data.data}`);
     };
     fetchData();
   }, [fetching]);
