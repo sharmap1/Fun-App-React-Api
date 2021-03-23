@@ -61,7 +61,7 @@ function App() {
             <FunDogPic />
           </Grid>
           <Grid item xs={6} sm={3}>
-            {/* <FunGiphy /> */}
+            <FunGiphy />
           </Grid>
         </Grid>
       </div>
