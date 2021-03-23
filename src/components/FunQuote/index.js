@@ -34,16 +34,20 @@ const FunQuote = () => {
     const imageAPI =
       "https://api.unsplash.com/photos/?client_id=EU37VySjc_qaNcGWSluRwBpg0CJCUWCRq5_jYZPIIps";
 
+    const randomIndex = Math.floor(Math.random() * 10);
+
     const getQuoteAPI = axios.get(quoteAPI);
     const getImageAPI = axios.get(imageAPI);
     axios.all([getQuoteAPI, getImageAPI]).then(
       axios.spread((...allData) => {
         const allDataQuote = allData[0].data;
-        const allDataImage = allData[1].data[0].urls.small;
+        // const allDataImage = allData[1].data[0].urls.small;
+        const allDataImage = allData[1].data[randomIndex];
+        let allResultsDataImage = allDataImage.urls.small;
 
         console.log(allDataImage);
 
-        setImage(allDataImage);
+        setImage(allResultsDataImage);
         setQuote(allDataQuote);
       })
     );
