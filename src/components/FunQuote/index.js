@@ -39,10 +39,9 @@ const FunQuote = () => {
     axios.all([getQuoteAPI, getImageAPI]).then(
       axios.spread((...allData) => {
         const allDataQuote = allData[0].data;
-        const allDataImage = allData[1].data;
+        const allDataImage = allData[1].data[0].urls.small;
 
-        // console.log(allDataQuote);
-        // console.log(allDataImage);
+        console.log(allDataImage);
 
         setImage(allDataImage);
         setQuote(allDataQuote);
@@ -54,7 +53,18 @@ const FunQuote = () => {
     fetchData();
   }, [fetching]);
 
-  // const onSearchClick = async (e) => {
+  // const renderImage = () => {
+  //   return (
+  //     <div>
+  //       {image &&
+  //         image.map((image) => (
+  //           <>
+  //             <img src={image.urls.small} />
+  //           </>
+  //         ))}
+  //     </div>
+  //   );
+  // };  // const onSearchClick = async (e) => {
   //   e.preventDefault();
 
   //   setFetching(!fetching);
@@ -75,12 +85,21 @@ const FunQuote = () => {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={
-              "https://images-na.ssl-images-amazon.com/images/I/61x07Ihm7aL._AC_.jpg"
-            }
-            // image={renderImage()}
+            // image={
+            //   "https://images-na.ssl-images-amazon.com/images/I/61x07Ihm7aL._AC_.jpg"
+            // }
+            image={image}
             title="Contemplative Dog"
           />
+          {/* {renderImage()} */}
+          {/* <div>
+            {image &&
+              image.map((image) => (
+                <>
+                  <img src={image.urls.small} />
+                </>
+              ))}
+          </div> */}
           <CardContent>
             <Typography variant="body" color="textSecondary" component="p">
               {quote}

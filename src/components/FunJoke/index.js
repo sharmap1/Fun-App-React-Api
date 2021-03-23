@@ -47,7 +47,7 @@ const FunJoke = () => {
       const result = await axios.get("https://icanhazdadjoke.com/", {
         headers: { Accept: "application/json" },
       });
-      console.log(result);
+      // console.log(result);
       setJoke(`${result.data.joke}`);
     };
 
