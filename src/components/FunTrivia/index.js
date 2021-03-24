@@ -23,29 +23,48 @@ const useStyles = makeStyles({
   },
 });
 
-const FunDogPic = () => {
+const FunTrivia = () => {
   const classes = useStyles();
-  const [pic, setPic] = useState("");
-  const [advice, setAdvice] = useState("");
+  const [question, setQuestion] = useState([]);
+  const [ans, setAns] = useState([]);
+  // const [ansAPI, setAnsAPI] = useState("");
 
   const [fetching, setFetching] = useState("false");
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("https://random.dog/woof.json");
-      setPic(`${result.data.url}`);
-    };
-
     fetchData();
   }, [fetching]);
 
+  const fetchData = async () => {
+    const result = await axios("http://jservice.io/api/random");
+    // console.log(result);
+    const questionAPI = result.data[0].question;
+    const ansAPI = result.data[0].answer;
+    setQuestion(questionAPI);
+    setAns(ansAPI);
+    // setAns("");
+
+    // setQuestion(`${result.data[0].question}`);
+    // const setAns = () => {
+    //   `${result.data[0].answer}`;
+    // };
+    // setAns(`${result.data[0].answer}`);
+  };
+
   const onSearchClick = async (e) => {
     e.preventDefault();
-    const result = await axios("https://api.adviceslip.com/advice");
-    // console.log(result);
-
     setFetching(!fetching);
-    setAdvice(`${result.data.slip.advice}`);
+  };
+  const onAnsClick = (e) => {
+    e.preventDefault();
+    // setAnsAPI(ans);
+
+    // setFetching(!fetching);
+    // setAdvice(`${result.data.slip.advice}`);
+    // const result = await axios("http://jservice.io/api/random");
+    // console.log(result);
+    // setAns(`${result.data[0].answer}`);
+    // setAns();
   };
 
   return (
@@ -54,26 +73,26 @@ const FunDogPic = () => {
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              A
+              T
             </Avatar>
           }
           action={<IconButton aria-label="settings"></IconButton>}
-          title="Advice"
+          title="Trivia"
           // subheader="September 14, 2016"s
         />
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={pic}
+            image="https://topessaywriter.org/wp-content/uploads/2019/06/Trivia-Questions-and-Answers-300x193.jpg"
             title="Contemplative Dog"
           />
           <CardContent>
             <Typography variant="body" color="textSecondary" component="p">
-              {/* “I don’t think twice about picking up my dog’s poop, but if
-              another dog’s poop is next to it, I think, ‘Eww, dog poop!” -Jonah
-              Goldberg */}
-              {advice}
-              {/* <FunQuote /> */}
+              Question: {question}
+            </Typography>
+            <Typography variant="body" color="textSecondary" component="p">
+              Ans: {ans}
+              {/* Ans: {ansAPI} */}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -86,9 +105,17 @@ const FunDogPic = () => {
           >
             next
           </Button>
+          <Button
+            size="medium"
+            color="primary"
+            // onClick={() => setFetching(!fetching)}
+            onClick={onAnsClick}
+          >
+            ans
+          </Button>
         </CardActions>
       </Card>
     </>
   );
 };
-export default FunDogPic;
+export default FunTrivia;

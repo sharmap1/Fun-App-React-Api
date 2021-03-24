@@ -9,7 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import { Typography, CardHeader, Avatar, IconButton } from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
+import { brown } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   root: {
@@ -19,34 +19,35 @@ const useStyles = makeStyles({
     height: 200,
   },
   avatar: {
-    backgroundColor: green[500],
+    backgroundColor: brown[500],
   },
 });
 
-const FunDogPic = () => {
+const FunPoke = () => {
   const classes = useStyles();
-  const [pic, setPic] = useState("");
-  const [advice, setAdvice] = useState("");
 
+  const [poke, setPoke] = useState([]);
+  const [name, setName] = useState([]);
   const [fetching, setFetching] = useState("false");
+
+  const pokeId = () => {
+    const min = Math.ceil(1);
+    const max = Math.floor(151);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("https://random.dog/woof.json");
-      setPic(`${result.data.url}`);
+      const result = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon/" + pokeId()
+      );
+      // console.log(result.data);
+      setPoke(`${result.data.sprites.front_default}`);
+      setName(`${result.data.species.name}`);
     };
 
     fetchData();
   }, [fetching]);
-
-  const onSearchClick = async (e) => {
-    e.preventDefault();
-    const result = await axios("https://api.adviceslip.com/advice");
-    // console.log(result);
-
-    setFetching(!fetching);
-    setAdvice(`${result.data.slip.advice}`);
-  };
 
   return (
     <>
@@ -54,26 +55,22 @@ const FunDogPic = () => {
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              A
+              P
             </Avatar>
           }
           action={<IconButton aria-label="settings"></IconButton>}
-          title="Advice"
+          title="Pokemon"
           // subheader="September 14, 2016"s
         />
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={pic}
-            title="Contemplative Dog"
+            image={poke}
+            title="Contemplative joke"
           />
           <CardContent>
             <Typography variant="body" color="textSecondary" component="p">
-              {/* “I don’t think twice about picking up my dog’s poop, but if
-              another dog’s poop is next to it, I think, ‘Eww, dog poop!” -Jonah
-              Goldberg */}
-              {advice}
-              {/* <FunQuote /> */}
+              {name}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -81,8 +78,7 @@ const FunDogPic = () => {
           <Button
             size="medium"
             color="primary"
-            // onClick={() => setFetching(!fetching)}
-            onClick={onSearchClick}
+            onClick={() => setFetching(!fetching)}
           >
             next
           </Button>
@@ -91,4 +87,4 @@ const FunDogPic = () => {
     </>
   );
 };
-export default FunDogPic;
+export default FunPoke;

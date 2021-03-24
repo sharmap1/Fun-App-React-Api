@@ -12,6 +12,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import FunPoke from "./components/FunPoke";
+import FunTrivia from "./components/FunTrivia";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,19 +51,25 @@ function App() {
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={6} sm={3}>
-            <FunQuote />
+            <FunGiphy />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <FunJoke />
+            <FunQuote />
           </Grid>
           <Grid item xs={6} sm={3}>
             <FunCatPic />
           </Grid>
           <Grid item xs={6} sm={3}>
+            <FunJoke />
+          </Grid>
+          <Grid item xs={6} sm={3}>
             <FunDogPic />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <FunGiphy />
+            <FunPoke />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <FunTrivia />
           </Grid>
         </Grid>
       </div>
