@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     maxWidth: 345,
   },
   media: {
-    height: 200,
+    height: 300,
   },
   avatar: {
     backgroundColor: red[500],

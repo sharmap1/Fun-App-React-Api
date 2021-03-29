@@ -49,7 +49,7 @@ function App() {
         <Box>FUN APP</Box>
       </Box>
       <div className={classes.root}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={6} sm={3}>
             <FunGiphy />
           </Grid>
@@ -62,14 +62,15 @@ function App() {
           <Grid item xs={6} sm={3}>
             <FunJoke />
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <FunDogPic />
-          </Grid>
+
           <Grid item xs={6} sm={3}>
             <FunPoke />
           </Grid>
           <Grid item xs={6} sm={3}>
             <FunTrivia />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <FunDogPic />
           </Grid>
         </Grid>
       </div>
