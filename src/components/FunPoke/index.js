@@ -9,7 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import { Typography, CardHeader, Avatar, IconButton } from "@material-ui/core";
-import { brown } from "@material-ui/core/colors";
+import { brown, lightBlue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   root: {
@@ -17,9 +17,15 @@ const useStyles = makeStyles({
   },
   media: {
     height: 200,
+    backgroundColor: brown[500],
   },
   avatar: {
     backgroundColor: brown[500],
+  },
+  content: {
+    backgroundColor: lightBlue[500],
+    textAlign: "center",
+    fontWeight: "bold",
   },
 });
 
@@ -27,7 +33,7 @@ const FunPoke = () => {
   const classes = useStyles();
 
   const [poke, setPoke] = useState([]);
-  const [name, setName] = useState([]);
+  // const [name, setName] = useState([]);
   const [fetching, setFetching] = useState("false");
 
   const pokeId = () => {
@@ -42,8 +48,9 @@ const FunPoke = () => {
         "https://pokeapi.co/api/v2/pokemon/" + pokeId()
       );
       // console.log(result.data);
-      setPoke(`${result.data.sprites.front_default}`);
-      setName(`${result.data.species.name}`);
+      // setPoke(`${result.data.sprites.front_default}`);
+      // setName(`${result.data.species.name}`);
+      setPoke(result.data);
     };
 
     fetchData();
@@ -65,12 +72,24 @@ const FunPoke = () => {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={poke}
+            // image={poke}
+            image={
+              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
+              poke.id +
+              ".png"
+            }
+            alt="picpoke"
             title="Contemplative joke"
           />
-          <CardContent>
+          <CardContent className={classes.content}>
             <Typography variant="body" color="textSecondary" component="p">
-              {name}
+              Name: {poke.name}
+            </Typography>
+            <Typography variant="body" color="textSecondary" component="p">
+              Height: {poke.height}
+            </Typography>
+            <Typography variant="body" color="textSecondary" component="p">
+              Weight: {poke.weight}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -27,7 +27,6 @@ const FunTrivia = () => {
   const classes = useStyles();
   const [question, setQuestion] = useState([]);
   const [ans, setAns] = useState([]);
-  // const [ansAPI, setAnsAPI] = useState("");
 
   const [fetching, setFetching] = useState("false");
 
@@ -37,7 +36,7 @@ const FunTrivia = () => {
 
   const fetchData = async () => {
     const result = await axios("http://jservice.io/api/random");
-    // console.log(result);
+    console.log(result);
     const questionAPI = result.data[0].question;
     const ansAPI = result.data[0].answer;
     setQuestion(questionAPI);
@@ -58,7 +57,7 @@ const FunTrivia = () => {
   const onAnsClick = (e) => {
     e.preventDefault();
     // setAnsAPI(ans);
-
+    //
     // setFetching(!fetching);
     // setAdvice(`${result.data.slip.advice}`);
     // const result = await axios("http://jservice.io/api/random");

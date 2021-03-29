@@ -30,23 +30,49 @@ const FunDogPic = () => {
 
   const [fetching, setFetching] = useState("false");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("https://random.dog/woof.json");
-      setPic(`${result.data.url}`);
-    };
+  const fetchData = () => {
+    const adviceAPI = "https://api.adviceslip.com/advice";
+    const picAPI = "https://random.dog/woof.json";
 
+    const getAdviceAPI = axios.get(adviceAPI);
+    const getpicAPI = axios.get(picAPI);
+    axios.all([getAdviceAPI, getpicAPI]).then(
+      axios.spread((...allData) => {
+        const allDataAdvice = allData[0].data.slip.advice;
+        const allDataPic = allData[1].data.url;
+
+        setPic(allDataPic);
+        setAdvice(allDataAdvice);
+      })
+    );
+  };
+
+  useEffect(() => {
     fetchData();
   }, [fetching]);
 
   const onSearchClick = async (e) => {
     e.preventDefault();
-    const result = await axios("https://api.adviceslip.com/advice");
-    // console.log(result);
 
     setFetching(!fetching);
-    setAdvice(`${result.data.slip.advice}`);
   };
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios("https://random.dog/woof.json");
+  //     setPic(`${result.data.url}`);
+  //   };
+
+  //   fetchData();
+  // }, [fetching]);
+
+  // const onSearchClick = async (e) => {
+  //   e.preventDefault();
+  //   const result = await axios("https://api.adviceslip.com/advice");
+
+  //   setFetching(!fetching);
+  //   setAdvice(`${result.data.slip.advice}`);
+  // };
 
   return (
     <>
