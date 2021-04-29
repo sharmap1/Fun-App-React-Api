@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { Card, Col } from "react-bootstrap";
 import { makeStyles, StylesProvider } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -10,7 +9,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import { Typography, CardHeader, Avatar, IconButton } from "@material-ui/core";
-import { purple, yellow } from "@material-ui/core/colors";
+import { purple } from "@material-ui/core/colors";
+
 const useStyles = makeStyles({
   avatar: {
     backgroundColor: purple[500],
