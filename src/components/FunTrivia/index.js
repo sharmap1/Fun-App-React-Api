@@ -12,7 +12,6 @@ import { green } from "@material-ui/core/colors";
 import Collapse from "@material-ui/core/Collapse";
 import clsx from "clsx";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import NavigateNextSharpIcon from "@material-ui/icons/NavigateNextSharp";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
