@@ -12,12 +12,6 @@ import { Typography, CardHeader, Avatar, IconButton } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 300,
-  },
   avatar: {
     backgroundColor: red[500],
   },
@@ -40,12 +34,12 @@ const FunQuote = () => {
     const getImageAPI = axios.get(imageAPI);
     axios.all([getQuoteAPI, getImageAPI]).then(
       axios.spread((...allData) => {
-        const allDataQuote = allData[0].data;
+        const allDataQuote = allData[0].data.quote;
         // const allDataImage = allData[1].data[0].urls.small;
         const allDataImage = allData[1].data[randomIndex];
         let allResultsDataImage = allDataImage.urls.small;
 
-        // console.log(allDataImage);
+        console.log(allData);
 
         setImage(allResultsDataImage);
         setQuote(allDataQuote);
@@ -56,23 +50,6 @@ const FunQuote = () => {
   useEffect(() => {
     fetchData();
   }, [fetching]);
-
-  // const renderImage = () => {
-  //   return (
-  //     <div>
-  //       {image &&
-  //         image.map((image) => (
-  //           <>
-  //             <img src={image.urls.small} />
-  //           </>
-  //         ))}
-  //     </div>
-  //   );
-  // };  // const onSearchClick = async (e) => {
-  //   e.preventDefault();
-
-  //   setFetching(!fetching);
-  // };
 
   return (
     <>
@@ -89,33 +66,18 @@ const FunQuote = () => {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            // image={
-            //   "https://images-na.ssl-images-amazon.com/images/I/61x07Ihm7aL._AC_.jpg"
-            // }
             image={image}
             title="Contemplative Dog"
           />
-          {/* {renderImage()} */}
-          {/* <div>
-            {image &&
-              image.map((image) => (
-                <>
-                  <img src={image.urls.small} />
-                </>
-              ))}
-          </div> */}
+
           <CardContent>
-            <Typography variant="body" color="textSecondary" component="p">
+            <Typography variant="body" component="p">
               {quote}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button
-            size="medium"
-            color="primary"
-            onClick={() => setFetching(!fetching)}
-          >
+          <Button size="medium" onClick={() => setFetching(!fetching)}>
             next
           </Button>
         </CardActions>
@@ -124,10 +86,3 @@ const FunQuote = () => {
   );
 };
 export default FunQuote;
-
-//Access Key
-// EU37VySjc_qaNcGWSluRwBpg0CJCUWCRq5_jYZPIIps
-//Secret key
-// EvoOk0FTqekhzYxFJis5puly8jbg1a5XYU2fy_efkRc
-// https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY
-// https://api.unsplash.com/photos/?client_id=EU37VySjc_qaNcGWSluRwBpg0CJCUWCRq5_jYZPIIps

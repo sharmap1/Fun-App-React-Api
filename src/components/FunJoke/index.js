@@ -12,12 +12,6 @@ import { Typography, CardHeader, Avatar, IconButton } from "@material-ui/core";
 import { blue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 300,
-  },
   avatar: {
     backgroundColor: blue[500],
   },
@@ -28,19 +22,6 @@ const FunJoke = () => {
 
   const [joke, setJoke] = useState("");
   const [fetching, setFetching] = useState("false");
-
-  // useEffect(() => {
-  //   fetchJoke();
-  // }, []);
-
-  // const fetchJoke = () => {
-  //   axios
-  //     .get("https://icanhazdadjoke.com/", {
-  //       headers: { Accept: "application/json" },
-  //     })
-  //     .then((res) => setJoke(res.data))
-  //     .catch((err) => console.log(err));
-  // };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,7 +46,6 @@ const FunJoke = () => {
           }
           action={<IconButton aria-label="settings"></IconButton>}
           title="Jokes"
-          // subheader="September 14, 2016"s
         />
         <CardActionArea>
           <CardMedia
@@ -74,7 +54,7 @@ const FunJoke = () => {
             title="Contemplative joke"
           />
           <CardContent>
-            <Typography variant="body" color="textSecondary" component="p">
+            <Typography variant="body" component="p">
               {joke}
             </Typography>
           </CardContent>

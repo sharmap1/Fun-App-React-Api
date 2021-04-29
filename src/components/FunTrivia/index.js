@@ -12,14 +12,9 @@ import { green } from "@material-ui/core/colors";
 import Collapse from "@material-ui/core/Collapse";
 import clsx from "clsx";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import NavigateNextSharpIcon from "@material-ui/icons/NavigateNextSharp";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 300,
-  },
   avatar: {
     backgroundColor: green[500],
   },
@@ -49,6 +44,7 @@ const FunTrivia = () => {
   };
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, [fetching]);
 
   const fetchData = async () => {
@@ -58,29 +54,11 @@ const FunTrivia = () => {
     const ansAPI = result.data[0].answer;
     setQuestion(questionAPI);
     setAns(ansAPI);
-    // setAns("");
-
-    // setQuestion(`${result.data[0].question}`);
-    // const setAns = () => {
-    //   `${result.data[0].answer}`;
-    // };
-    // setAns(`${result.data[0].answer}`);
   };
 
   const onSearchClick = async (e) => {
     e.preventDefault();
     setFetching(!fetching);
-  };
-  const onAnsClick = (e) => {
-    e.preventDefault();
-    // setAnsAPI(ans);
-    //
-    // setFetching(!fetching);
-    // setAdvice(`${result.data.slip.advice}`);
-    // const result = await axios("http://jservice.io/api/random");
-    // console.log(result);
-    // setAns(`${result.data[0].answer}`);
-    // setAns();
   };
 
   return (
@@ -101,12 +79,12 @@ const FunTrivia = () => {
           title="triviaQuestions"
         />
         <CardContent>
-          <Typography variant="body" color="textSecondary" component="p">
+          <Typography variant="body" component="p">
             Question: {question}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <Button size="medium" color="primary" onClick={onSearchClick}>
+          <Button size="medium" onClick={onSearchClick}>
             next
           </Button>
 

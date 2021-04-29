@@ -9,21 +9,17 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import { Typography, CardHeader, Avatar, IconButton } from "@material-ui/core";
-import { brown, lightBlue, grey } from "@material-ui/core/colors";
+import { brown, grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
   media: {
-    height: 300,
     backgroundColor: grey[500],
   },
   avatar: {
     backgroundColor: brown[500],
   },
   content: {
-    backgroundColor: lightBlue[500],
+    // backgroundColor: lightBlue[500],
     textAlign: "center",
     fontWeight: "bold",
   },
@@ -82,23 +78,19 @@ const FunPoke = () => {
             title="Contemplative joke"
           />
           <CardContent className={classes.content}>
-            <Typography variant="body" color="textSecondary" component="p">
+            <Typography variant="body" component="p">
               Name: {poke.name}
             </Typography>
-            <Typography variant="body" color="textSecondary" component="p">
+            <Typography variant="body" component="p">
               Height: {poke.height}
             </Typography>
-            <Typography variant="body" color="textSecondary" component="p">
+            <Typography variant="body" component="p">
               Weight: {poke.weight}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button
-            size="medium"
-            color="primary"
-            onClick={() => setFetching(!fetching)}
-          >
+          <Button size="medium" onClick={() => setFetching(!fetching)}>
             next
           </Button>
         </CardActions>

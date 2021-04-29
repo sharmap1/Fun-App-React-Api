@@ -1,19 +1,16 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 import FunGiphy from "./components/FunGiphy";
 import FunJoke from "./components/FunJoke";
 import FunQuote from "./components/FunQuote";
 import FunCatPic from "./components/FunCatPic";
-import FunDogPic from "./components/FunDogPic";
-// import { Container, Row, Col } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
-
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import FunPoke from "./components/FunPoke";
 import FunTrivia from "./components/FunTrivia";
+import { white } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,34 +40,33 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
+
   return (
     <>
       <Box className={classes.hero}>
         <Box>FUN APP</Box>
       </Box>
+
       <div className={classes.root}>
         <Grid container spacing={2}>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={4} md={3}>
             <FunGiphy />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={4} md={3}>
             <FunQuote />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={4} md={3}>
             <FunCatPic />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={4} md={3}>
             <FunJoke />
           </Grid>
 
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={4} md={3}>
             <FunPoke />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={4} md={3}>
             <FunTrivia />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <FunDogPic />
           </Grid>
         </Grid>
       </div>

@@ -1,19 +1,27 @@
-/* .App {
-  text-align: center;
+#root {
+  /* background-color: rgb(181, 255, 255); */
+  background-color: var(--cyan);
 }
 
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-#body {
-  background-color: aqua;
+.MuiTypography-body2 {
+  font-size: 2rem !important;
 }
-/* sprites.front_default */
+.MuiCard-root {
+  background-color: rgba(97, 5, 48, 0.513) !important;
+  color: white !important;
+}
+.MuiTypography-root {
+  font-size: 16px !important;
+}
+.MuiAvatar-root {
+  font-size: 2.25rem !important;
+}
+.MuiButton-label {
+  color: white !important;
+}
+.MuiSvgIcon-root {
+  color: white !important;
+}
+.MuiCardMedia-root {
+  height: 350px;
+}
