@@ -39,7 +39,7 @@ const FunQuote = () => {
         const allDataImage = allData[1].data[randomIndex];
         let allResultsDataImage = allDataImage.urls.small;
 
-        console.log(allData);
+        // console.log(allData);
 
         setImage(allResultsDataImage);
         setQuote(allDataQuote);
