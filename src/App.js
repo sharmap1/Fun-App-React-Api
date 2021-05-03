@@ -48,20 +48,20 @@ function App() {
 
       <div className={classes.root}>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <FunGiphy />
           </Grid>
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <FunQuote />
           </Grid>
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <FunCatPic />
           </Grid>
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <FunJoke />
           </Grid>
 
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <FunPoke />
           </Grid>
           {/* <Grid item xs={12} sm={4} md={3}>
