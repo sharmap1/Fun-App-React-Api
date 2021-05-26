@@ -12,6 +12,7 @@ import { green } from "@material-ui/core/colors";
 import Collapse from "@material-ui/core/Collapse";
 import clsx from "clsx";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import IMG1 from "../../assets/tri.jpg";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -74,7 +75,9 @@ const FunTrivia = () => {
         />
         <CardMedia
           className={classes.media}
-          image="https://topessaywriter.org/wp-content/uploads/2019/06/Trivia-Questions-and-Answers-300x193.jpg"
+          // image="https://topessaywriter.org/wp-content/uploads/2019/06/Trivia-Questions-and-Answers-300x193.jpg"
+          image={IMG1}
+          // image=`url(${process.env.PUBLIC_URL + "/assets/tri.jpg" })`
           title="triviaQuestions"
         />
         <CardContent>

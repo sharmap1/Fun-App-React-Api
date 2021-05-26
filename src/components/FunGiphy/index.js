@@ -28,7 +28,7 @@ const FunGiphy = () => {
       const result = await axios(
         `https://api.giphy.com/v1/gifs/trending?api_key=${api_key}`
       );
-      console.log(result);
+      // console.log(result);
       let randomIndex = Math.floor(Math.random() * 50);
 
       let results = result.data.data[randomIndex];

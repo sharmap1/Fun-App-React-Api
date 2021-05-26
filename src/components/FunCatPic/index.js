@@ -35,8 +35,8 @@ const FunCatPic = () => {
         const allDataFact = allData[0].data[1].text;
         const allDataPic = allData[1].data.file;
 
-        // console.log(allDataFact);
-        // console.log(allDataPic);
+        console.log(allDataFact);
+        console.log(allDataPic);
 
         setPic(allDataPic);
         setFact(allDataFact);
@@ -56,6 +56,8 @@ const FunCatPic = () => {
 
   return (
     <>
+    < img src= {pic} alt="catpic" style={{width:"200px" , height:"200px"}}
+    />
       <StylesProvider>
         <Card className={classes.root}>
           <CardHeader
