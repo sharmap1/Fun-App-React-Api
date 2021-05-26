@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import FunGiphy from "./components/FunGiphy";
 import FunJoke from "./components/FunJoke";
 import FunQuote from "./components/FunQuote";
-// import FunCatPic from "./components/FunCatPic";
+import FunCatPic from "./components/FunCatPic";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -65,9 +65,9 @@ function App() {
           <Grid item xs={12} sm={6} md={4}>
             <FunTrivia />
           </Grid>
-          {/* <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <FunCatPic />
-          </Grid> */}
+          </Grid>
         </Grid>
       </div>
     </>

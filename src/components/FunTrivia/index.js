@@ -49,7 +49,7 @@ const FunTrivia = () => {
 
   const fetchData = async () => {
     const result = await axios("http://jservice.io/api/random");
-    console.log(result);
+    // console.log(result);
     const questionAPI = result.data[0].question;
     const ansAPI = result.data[0].answer;
     setQuestion(questionAPI);
@@ -82,6 +82,13 @@ const FunTrivia = () => {
         />
         <CardContent>
           <Typography variant="body" component="p">
+            {/* {question.map((elem, ind) => {
+              return (
+                <div key={ind}>
+                  <h3>{elem}</h3>
+                </div>
+              );
+            })} */}
             Question: {question}
           </Typography>
         </CardContent>

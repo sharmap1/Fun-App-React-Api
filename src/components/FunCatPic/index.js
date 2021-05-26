@@ -23,20 +23,37 @@ const FunCatPic = () => {
   const [pic, setPic] = useState("");
   const [fetching, setFetching] = useState("false");
 
+  // const fetchData = async () => {
+  //   const result = await axios("https://aws.random.cat/meow");
+  //   console.log(result);
+  //   setPic(result.data.file);
+  //   //working code
+  // };
+
+  // const fetchData = async () => {
+  //   const result = await axios(
+  //     "https://cat-fact.herokuapp.com/facts/random?animal_type=cat"
+  //   );
+  //   console.log(result);
+  //   setFact(result.data.text);
+  //   //working code
+  // };
+
   const fetchData = () => {
     const factAPI =
-      "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=200";
+      "https://cat-fact.herokuapp.com/facts/random?animal_type=cat";
+
     const picAPI = "https://aws.random.cat/meow";
 
     const getfactAPI = axios.get(factAPI);
     const getpicAPI = axios.get(picAPI);
     axios.all([getfactAPI, getpicAPI]).then(
       axios.spread((...allData) => {
-        const allDataFact = allData[0].data[1].text;
+        const allDataFact = allData[0].data.text;
         const allDataPic = allData[1].data.file;
 
-        console.log(allDataFact);
-        console.log(allDataPic);
+        // console.log(allDataFact);
+        // console.log(allDataPic);
 
         setPic(allDataPic);
         setFact(allDataFact);
@@ -56,8 +73,6 @@ const FunCatPic = () => {
 
   return (
     <>
-    < img src= {pic} alt="catpic" style={{width:"200px" , height:"200px"}}
-    />
       <StylesProvider>
         <Card className={classes.root}>
           <CardHeader
